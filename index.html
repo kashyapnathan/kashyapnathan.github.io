@@ -1,140 +1,327 @@
 <!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>Kashyap Nathan</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f0f0f0;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            color: #333;
+            height: 100vh;
+            overflow: hidden; /* Prevent body scroll, we will scroll only the right pane */
+        }
+        a {
+            text-decoration: none;
+            color: #001f3f;
+            transition: color 0.3s ease;
+        }
 
-<html>
-	<head>
-		<title>Kashyap Nathan's Website</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+        a:hover {
+            color: #004080;
+        }
 
-		<!-- Header -->
-			<header id="header">
-				<div class="inner">
-					<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
-					<h1><strong>Hey! I am Kashyap</strong>, I go to Georgia Tech!<br />
-					</h1>
+        .split-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Left Pane: Static */
+        .left-pane {
+            width: 300px;
+            background: #f0f0f0;
+            padding: 2rem;
+            box-sizing: border-box;
+            border-right: 1px solid #ccc;
+            position: relative;
+        }
+
+        .left-pane .avatar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .left-pane .avatar img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .left-pane .avatar img:hover {
+            transform: scale(1.05);
+        }
+
+        .left-pane h2 {
+            font-size: 1.5rem;
+            color: #001f3f;
+            margin-bottom: 1rem;
+        }
+
+        .left-pane p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 0.75em 1.5em;
+            background: #001f3f;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .button:hover {
+            background: #004080;
+        }
+
+        /* Right Pane: Scrollable content */
+        .right-pane {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        .right-pane h2 {
+            font-size: 1.8rem;
+            color: #001f3f;
+            margin-bottom: 1rem;
+        }
+
+        .right-pane p {
+            max-width: 700px;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        /* Experience Grid */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .company {
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .company:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+
+        .company img {
+            max-width: 80px;
+            margin-bottom: 1rem;
+        }
+
+        .company h3 {
+            font-size: 1.25rem;
+            margin: 0.5em 0;
+            color: #001f3f;
+        }
+
+        .company p {
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .project {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+
+        .project img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .project h3 {
+            font-size: 1.25rem;
+            color: #001f3f;
+            margin: 0.5rem 0;
+        }
+
+        .project p {
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .project .button {
+            background: #001f3f;
+            color: #fff;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+
+        .project .button:hover {
+            background: #004080;
+        }
+
+        footer {
+            background: #f0f0f0;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .icons {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: inline-flex;
+            gap: 1rem;
+        }
+
+        .icons li {
+            display: inline-block;
+        }
+
+        .icons li a {
+            display: inline-block;
+            background: #001f3f; /* Button background color */
+            color: #fff;
+            padding: 0.75rem 1.25rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .icons li a:hover {
+            background: #004080; /* Hover background color */
+            transform: translateY(-2px);
+        }
+
+        .icons li a:active {
+            background: #003366; /* Active state color */
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body>
+<div class="split-container">
+    <!-- Left Pane (Static): Avatar + About Me -->
+    <div class="left-pane">
+        <div class="avatar">
+            <img src="images/avatar.png" alt="Avatar" />
+        </div>
+        <h2>About Me:</h2>
+        <p>Hey, I'm Kashyap! I'm a Junior at Georgia Tech, majoring in Computer Science. </p>
+		
+		<p> my free time, I run, DJ, ski, and cook.</p>
+        <a href="https://drive.google.com/file/d/1d5-LSs4EBsLSUoqJbeBINrBbRt-yIjGC/view?usp=sharing" class="button">Learn More</a>
+    </div>
+
+    <!-- Right Pane (Scrollable): Experience + Projects -->
+    <div class="right-pane">
+        <section id="experience">
+            <h2>Professional Experience</h2>
+			<p>Here are some of the companies I've worked at:</p>   
+
+            <div class="experience-grid">
+                <!-- OpenAI -->
+                <div class="company">
+                    <img src="images/openai.png" alt="OpenAI Logo">
+                    <h3>OpenAI (Incoming)</h3>
+                    <p><b>SWE Intern:</b> Contributing to advanced AI and language models at the forefront of artificial intelligence.</p>
+                </div>
+                <!-- Palantir -->
+                <div class="company">
+                    <img src="images/palantir.png" alt="Palantir Logo">
+                    <h3>Palantir</h3>
+                    <p><b>Deployment Strategist Intern: </b>Building data-driven platforms to empower organizations with actionable insights.</p>
+                </div>
+                <!-- Amazon -->
+                <div class="company">
+                    <img src="images/aws.png" alt="Amazon Logo">
+                    <h3>Amazon</h3>
+                    <p><b>SWE Intern:</b> Developed scalable features ensuring top-tier customer experiences in a fast-paced environment.</p>
+                </div>
+                <!-- DARPA -->
+                <div class="company">
+                    <img src="images/darpa.png" alt="DARPA Logo">
+                    <h3>DARPA</h3>
+                    <p><b>ML Researcher:</b> Contributed to high-impact research initiatives, driving technological advances and innovation.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <p>Here are some personal and academic projects I've worked on:</p>
+
+            <div class="projects-grid">
+                <div class="project">
+					<img src="images/thumbs/poker.png" alt="PokerPokerPoker Preview" />
+					<h3>PokerPokerPoker</h3>
+					<p>An advanced poker simulation employing Monte Carlo methods, GTO strategies, and probabilistic opponent modeling for realistic play.</p>
+					<a href="https://github.com/kashyapnathan/PokerPokerPoker" class="button">Explore</a>
 				</div>
-			</header>  
-
-		<!-- Main -->
-			<div id="main">
-
-				<!-- One -->
-					<section id="one">
-						<header class="major">
-							<h1><strong>About Me...<br />
-						</header>
-						<p>Hey, I'm Kashyap! 
-							
-							I'm a Sophomore at Georgia Tech, majoring in Computer Science with the Intelligence and Systems and Architecture Threads. 
-							
-							I most recently worked at Comcast as a software engineering intern in Philly. Here, I assisted with development of the Certification Declaration Service (CDS), achieving 100% uptime, harnessing a Python- based CD generation module, along with additional components including a REST API wrapper, SAT Authorizer, Signer call handler, and a web service.
-							
-						</p>
-							I have experience with: Java, Python, Solidity, HTML/ CSS, ReactJS, Angular, NodeJS, C, and C++.
-						
-						</p>
-							In my free time I DJ, ski, and cook.</p>
-							<a href="https://drive.google.com/file/d/1nD5pmatq69fmloJeyOiShHfn2BvnO1rt/view?usp=sharing" class="button">Learn More<a></a></p>
-						</ul>
-					</section>
-
-				<!-- Two -->
-					<section id="two">
-						<h2>Recent Work</h2>
-						<div class="row">
-							<article class="col-6 col-10-xsmall work-item">
-								<a href="images/fulls/10.png" class="image fit thumb"><img src="images/thumbs/10.png" alt="" /></a>
-								<h3>DigitRecognizer</h3>
-								<p>Digit Recognizer is a simple web application that uses a Convolutional Neural Network (CNN) to predict handwritten digits. The application is built using Flask and TensorFlow.</p>
-								<ul class="actions">
-									<li><a href="https://github.com/kashyapnathan/DigitRecognizer" class="button">Explore<a></a></p>
-							</article>
-							<article class="col-6 col-10-xsmall work-item">
-								<a href="images/fulls/07.png" class="image fit thumb"><img src="images/thumbs/07.png" alt="" /></a>
-								<h3>MusicInsight</h3>
-								<p>MusicInsight is a web-based tool that evaluates the emotional tone of Spotify playlists by calculating sentiment scores for each track, offering users a deeper understanding of their playlist's overall mood</p>
-								<ul class="actions">
-									<li><a href="https://github.com/kashyapnathan/MusicInsight" class="button">Explore<a></a></p>
-							</article>
-							<article class="col-6 col-10-xsmall work-item">
-								<a href="images/fulls/09.png" class="image fit thumb"><img src="images/thumbs/09.png" alt="" /></a>
-								<h3>Fantasy Football Player Rankings</h3>
-								<p>A Python script that utilizes given statistics to compute fantasy football player rankings and team scores, employing position-specific equations and sourcing data from a JSON file.</p>
-								<ul class="actions">
-									<li><a href="https://github.com/kashyapnathan/Fantasy-Football-Player-Rankings" class="button">Explore<a></a></p>
-							</article>
-							<article class="col-6 col-10-xsmall work-item">
-								<a href="images/fulls/08.png" class="image fit thumb"><img src="images/thumbs/08.png" alt="" /></a>
-								<h3>Calculator</h3>
-								<p>An implementation of a very basic calculator in C.</p>
-								<ul class="actions">
-									<li><a href="https://github.com/kashyapnathan/EasyCalcinC" class="button">Explore<a></a></p>
-							</article>
-							<article class="col-6 col-10-xsmall work-item">
-								<a href="images/fulls/01.png" class="image fit thumb"><img src="images/thumbs/01.png" alt="" /></a>
-								<h3>Tic Tac Toe</h3>
-								<p>An implementation of Tic Tac Toe in ReactJS and Javascript.</p>
-								<ul class="actions">
-									<li><a href="https://github.com/kashyapnathan/Tic-Tac-Toe" class="button">Explore<a></a></p>
-							</article>
-							<article class="col-6 col-10-xsmall work-item">
-								<a href="images/fulls/03.png" class="image fit thumb"><img src="images/thumbs/03.png" alt="" /></a>
-								<h3>Eth-Payment-Channel</h3>
-								<ul class="actions">
-									<li><a href="https://github.com/kashyapnathan/Eth-Payment-Channel" class="button">Explore<a></a></p>
-							</article>
-							<article class="col-6 col-10-xsmall work-item">
-								<a href="images/fulls/02.png" class="image fit thumb"><img src="images/thumbs/02.png" alt="" /></a>
-								<h3>Twitter List Friends Generation Script</h3>
-								<p>Create a Twitter List on your account with all the people that someone is following on your account</p>
-								<ul class="actions">
-									<li><a href="https://github.com/kashyapnathan/Twitter-Friend-List-Gen" class="button">Explore<a></a></p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/04.png" class="image fit thumb"><img src="images/thumbs/04.png" alt="" /></a>
-								<h3>Trustless-token-swap</h3>
-								<ul class="actions">
-									<li><a href="https://github.com/kashyapnathan/Trustless-token-swap" class="button">Explore<a></a></p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/05.png" class="image fit thumb"><img src="images/thumbs/05.png" alt="" /></a>
-								<h3>Pacman</h3>
-								<p>A rendition of Pacman in Java</p>
-								<ul class="actions">
-									<li><a href="https://github.com/kashyapnathan/Pacman" class="button">Explore<a></a></p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/06.png" class="image fit thumb"><img src="images/thumbs/06.png" alt="" /></a>
-								<h3>Rock Paper Scissors</h3>
-								<p>An implementation of Rock, Paper, Scissors, in Python</p>
-								<ul class="actions">
-									<li><a href="https://github.com/kashyapnathan/OldRockPaperScissors" class="button">Explore<a></a></p>
-							</article>
-						</div>
-					</section>
-
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<ul class="icons">
-						<li><a href="mailto:knathan31@gatech.edu" class="icon solid fa-envelope"><span class="label">Email</span><a></a></li>
-						<li><a href="https://github.com/kashyapnathan" class="icon brands fa-github"><span class="label">Github</span><a></a></li>
-						<li><a href="https://twitter.com/kashyap_nathan" class="icon brands fa-twitter"><span class="label">Twitter</span><a></a></li>
-						<li><a href="https://www.linkedin.com/in/kash-nathan/" class="icon brands fa-linkedin"><span class="label">Linkedin</span><a></a></li>
-					</ul>
+				<div class="project">
+					<img src="images/thumbs/arb.png" alt="Crypto Arb Preview" />
+					<h3>Crypto Arbitrage Bot</h3>
+					<p>A cryptocurrency arbitrage bot that identifies and exploits inter-exchange price discrepancies for profit.</p>
+					<a href="https://github.com/kashyapnathan/crypto-arbitrage" class="button">Explore</a>
 				</div>
-			</footer>
+				<div class="project">
+					<img src="images/thumbs/perf.png" alt="PerfVantage Preview" />
+					<h3>PerfVantage</h3>
+					<p>A performance analysis and visualization tool that highlights system bottlenecks, resource usage, and efficiency improvements.</p>
+					<a href="https://github.com/kashyapnathan/EmbeddedFinal" class="button">Explore</a>
+				</div>
+				<div class="project">
+                    <img src="images/thumbs/07.png" alt="MusicInsight Preview" />
+                    <h3>MusicInsight</h3>
+                    <p>Web tool that evaluates the emotional tone of Spotify playlists, giving sentiment scores for each track.</p>
+                    <a href="https://github.com/kashyapnathan/MusicInsight" class="button">Explore</a>
+                </div>
+            </div>
+        </section>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+</body>
+    <!-- Footer -->
+    <footer id="footer">
+        <ul class="icons">
+            <li><a href="mailto:knathan31@gatech.edu" class="icon solid fa-envelope">Email</a></li>
+            <li><a href="https://github.com/kashyapnathan" class="icon brands fa-github">GitHub</a></li>
+            <li><a href="https://twitter.com/kashyapnathan_" class="icon brands fa-twitter">Twitter</a></li>
+            <li><a href="https://www.linkedin.com/in/kash-nathan/" class="icon brands fa-linkedin">LinkedIn</a></li>
+        </ul>
+    </footer>
+    <!-- Optional Scripts if needed -->
+    <!-- <script src="assets/js/main.js"></script> -->
+</body>
 </html>
