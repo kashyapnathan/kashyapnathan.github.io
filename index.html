@@ -1,494 +1,328 @@
 <!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>Kashyap Nathan</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f0f0f0;
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            color: #333;
+            height: 100vh;
+            overflow: hidden; /* Prevent body scroll, we will scroll only the right pane */
+        }
 
-<html>
-	<head>
-		<title>Kashyap Nathan's Website</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+        a {
+            text-decoration: none;
+            color: #001f3f;
+            transition: color 0.3s ease;
+        }
 
-		<!-- Header -->
-			<header id="header">
-				<div class="inner">
-					<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
-					<h1><strong>Hey! I am Kashyap</strong>, an undergraduate student at<br />
-					Georgia Tech, studying Computer Science.</h1>
+        a:hover {
+            color: #004080;
+        }
+
+        .split-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Left Pane: Static */
+        .left-pane {
+            width: 300px;
+            background: #f0f0f0;
+            padding: 2rem;
+            box-sizing: border-box;
+            border-right: 1px solid #ccc;
+            position: relative;
+        }
+
+        .left-pane .avatar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .left-pane .avatar img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .left-pane .avatar img:hover {
+            transform: scale(1.05);
+        }
+
+        .left-pane h2 {
+            font-size: 1.5rem;
+            color: #001f3f;
+            margin-bottom: 1rem;
+        }
+
+        .left-pane p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 0.75em 1.5em;
+            background: #001f3f;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .button:hover {
+            background: #004080;
+        }
+
+        /* Right Pane: Scrollable content */
+        .right-pane {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        .right-pane h2 {
+            font-size: 1.8rem;
+            color: #001f3f;
+            margin-bottom: 1rem;
+        }
+
+        .right-pane p {
+            max-width: 700px;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        /* Experience Grid */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .company {
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .company:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+
+        .company img {
+            max-width: 80px;
+            margin-bottom: 1rem;
+        }
+
+        .company h3 {
+            font-size: 1.25rem;
+            margin: 0.5em 0;
+            color: #001f3f;
+        }
+
+        .company p {
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .project {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+
+        .project img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .project h3 {
+            font-size: 1.25rem;
+            color: #001f3f;
+            margin: 0.5rem 0;
+        }
+
+        .project p {
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .project .button {
+            background: #001f3f;
+            color: #fff;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+
+        .project .button:hover {
+            background: #004080;
+        }
+
+        footer {
+            background: #f0f0f0;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .icons {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: inline-flex;
+            gap: 1rem;
+        }
+
+        .icons li {
+            display: inline-block;
+        }
+
+        .icons li a {
+            display: inline-block;
+            background: #001f3f; /* Button background color */
+            color: #fff;
+            padding: 0.75rem 1.25rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .icons li a:hover {
+            background: #004080; /* Hover background color */
+            transform: translateY(-2px);
+        }
+
+        .icons li a:active {
+            background: #003366; /* Active state color */
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body>
+<div class="split-container">
+    <!-- Left Pane (Static): Avatar + About Me -->
+    <div class="left-pane">
+        <div class="avatar">
+            <img src="images/avatar.png" alt="Avatar" />
+        </div>
+        <h2>About Me:</h2>
+        <p>Hey, I'm Kashyap! I'm a Junior at Georgia Tech, majoring in Computer Science. </p>
+		
+		<p> my free time, I run, DJ, ski, and cook.</p>
+        <a href="https://drive.google.com/file/d/1d5-LSs4EBsLSUoqJbeBINrBbRt-yIjGC/view?usp=sharing" class="button">Learn More</a>
+    </div>
+
+    <!-- Right Pane (Scrollable): Experience + Projects -->
+    <div class="right-pane">
+        <section id="experience">
+            <h2>Professional Experience</h2>
+			<p>Here are some of the companies I've worked at:</p>   
+
+            <div class="experience-grid">
+                <!-- OpenAI -->
+                <div class="company">
+                    <img src="images/openai.png" alt="OpenAI Logo">
+                    <h3>OpenAI (Incoming)</h3>
+                    <p><b>SWE Intern:</b> Contributing to advanced AI and language models at the forefront of artificial intelligence.</p>
+                </div>
+                <!-- Palantir -->
+                <div class="company">
+                    <img src="images/palantir.png" alt="Palantir Logo">
+                    <h3>Palantir</h3>
+                    <p><b>Deployment Strategist Intern: </b>Building data-driven platforms to empower organizations with actionable insights.</p>
+                </div>
+                <!-- Amazon -->
+                <div class="company">
+                    <img src="images/aws.png" alt="Amazon Logo">
+                    <h3>Amazon</h3>
+                    <p><b>SWE Intern:</b> Developed scalable features ensuring top-tier customer experiences in a fast-paced environment.</p>
+                </div>
+                <!-- DARPA -->
+                <div class="company">
+                    <img src="images/darpa.png" alt="DARPA Logo">
+                    <h3>DARPA</h3>
+                    <p><b>ML Researcher:</b> Contributed to high-impact research initiatives, driving technological advances and innovation.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <p>Here are some personal and academic projects I've worked on:</p>
+
+            <div class="projects-grid">
+                <div class="project">
+					<img src="images/thumbs/poker.png" alt="PokerPokerPoker Preview" />
+					<h3>PokerPokerPoker</h3>
+					<p>An advanced poker simulation employing Monte Carlo methods, GTO strategies, and probabilistic opponent modeling for realistic play.</p>
+					<a href="https://github.com/kashyapnathan/PokerPokerPoker" class="button">Explore</a>
 				</div>
-			</header>
-
-		<!-- Main -->
-			<div id="main">
-
-				<!-- One -->
-					<section id="one">
-						<header class="major">
-							<h1><strong>About Me...<br />
-						</header>
-						<p>Hey, I'm Kashyap! 
-							
-							I'm a Sophomore at the Georgia Tech, majoring in Computer Science with the Intelligence and Systems and Architecture Threads. 
-							
-							I most recently worked at Comcast as a software engineering intern in Philly. Here, I assisted with development of the Certification Declaration Service (CDS), achieving 100% uptime, harnessing a Python- based CD generation module, along with additional components including a REST API wrapper, SAT Authorizer, Signer call handler, and a web service.
-							
-						</p>
-
-							Prior to that, I worked at the GRAIT-DM Project @ Georgia Tech, a project that centers around using ML/AI to classify news as fake/authentic. 
-							In this role, I created, trained, and implemented Transformer Neural Networks and Convolutional Neural Networks (CNNs) to evaluate news articles for the presence of fake news. 
-							
-							I have experience with: Java, Python, Solidity, HTML/ CSS, ReactJS, Angular, NodeJS, C, and C++.
-						
-						</p>
-							In my free time I DJ, ski, and cook.</p>
-							<a href="https://drive.google.com/file/d/1d5-LSs4EBsLSUoqJbeBINrBbRt-yIjGC/view?usp=sharing" class="button">Learn More<a></a></p>
-						</ul>
-					</section>
-
-				<!-- Two -->
-					<section id="two">
-						<h2>Recent Work</h2>
-						<div class="row">
-							<article class="col-6 col-10-xsmall work-item">
-								<a href="images/fulls/07.png" class="image fit thumb"><img src="images/thumbs/07.png" alt="" /></a>
-								<h3>MusicInsight</h3>
-								<p>MusicInsight is a web-based tool that evaluates the emotional tone of Spotify playlists by calculating sentiment scores for each track, offering users a deeper understanding of their playlist's overall mood</p>
-								<ul class="actions">
-									<li><a href="https://github.com/kashyapnathan/MusicInsight" class="button">Explore<a></a></p>
-							</article>
-							<article class="col-6 col-10-xsmall work-item">
-								<a href="images/fulls/09.png" class="image fit thumb"><img src="images/thumbs/09.png" alt="" /></a>
-								<h3>Fantasy Football Player Rankings</h3>
-								<p>A Python script that utilizes given statistics to compute fantasy football player rankings and team scores, employing position-specific equations and sourcing data from a JSON file.</p>
-								<ul class="actions">
-									<li><a href="https://github.com/kashyapnathan/Fantasy-Football-Player-Rankings" class="button">Explore<a></a></p>
-							</article>
-							<article class="col-6 col-10-xsmall work-item">
-								<a href="images/fulls/08.png" class="image fit thumb"><img src="images/thumbs/08.png" alt="" /></a>
-								<h3>Calculator</h3>
-								<p>An implementation of a very basic calculator in C.</p>
-								<ul class="actions">
-									<li><a href="https://github.com/kashyapnathan/EasyCalcinC" class="button">Explore<a></a></p>
-							</article>
-							<article class="col-6 col-10-xsmall work-item">
-								<a href="images/fulls/01.png" class="image fit thumb"><img src="images/thumbs/01.png" alt="" /></a>
-								<h3>Tic Tac Toe</h3>
-								<p>An implementation of Tic Tac Toe in ReactJS and Javascript.</p>
-								<ul class="actions">
-									<li><a href="https://github.com/kashyapnathan/Tic-Tac-Toe" class="button">Explore<a></a></p>
-							</article>
-							<article class="col-6 col-10-xsmall work-item">
-								<a href="images/fulls/03.png" class="image fit thumb"><img src="images/thumbs/03.png" alt="" /></a>
-								<h3>Eth-Payment-Channel</h3>
-								<ul class="actions">
-									<li><a href="https://github.com/kashyapnathan/Eth-Payment-Channel" class="button">Explore<a></a></p>
-							</article>
-							<article class="col-6 col-10-xsmall work-item">
-								<a href="images/fulls/02.png" class="image fit thumb"><img src="images/thumbs/02.png" alt="" /></a>
-								<h3>Twitter List Friends Generation Script</h3>
-								<p>Create a Twitter List on your account with all the people that someone is following on your account</p>
-								<ul class="actions">
-									<li><a href="https://github.com/kashyapnathan/Twitter-Friend-List-Gen" class="button">Explore<a></a></p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/04.png" class="image fit thumb"><img src="images/thumbs/04.png" alt="" /></a>
-								<h3>Trustless-token-swap</h3>
-								<ul class="actions">
-									<li><a href="https://github.com/kashyapnathan/Trustless-token-swap" class="button">Explore<a></a></p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/05.png" class="image fit thumb"><img src="images/thumbs/05.png" alt="" /></a>
-								<h3>Pacman</h3>
-								<p>A rendition of Pacman in Java</p>
-								<ul class="actions">
-									<li><a href="https://github.com/kashyapnathan/Pacman" class="button">Explore<a></a></p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/06.png" class="image fit thumb"><img src="images/thumbs/06.png" alt="" /></a>
-								<h3>Rock Paper Scissors</h3>
-								<p>An implementation of Rock, Paper, Scissors, in Python</p>
-								<ul class="actions">
-									<li><a href="https://github.com/kashyapnathan/OldRockPaperScissors" class="button">Explore<a></a></p>
-							</article>
-						</div>
-					</section>
-
-				<!-- Three
-					<section id="three">
-						<h2>Get In Touch</h2>
-						<div class="row">
-							<div class="col-8 col-12-small">
-								<form method="post" action="#">
-									<div class="row gtr-uniform gtr-50">
-										<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
-										<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
-										<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
-									</div>
-								</form>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</div>
-							<div class="col-4 col-12-small">
-								<ul class="labeled-icons">
-									<li>
-										<h3 class="icon solid fa-home"><span class="label">Address</span></h3>
-										331360 Georgia Tech Station.<br />
-										Atlanta, GA 30332<br />
-										United States
-									</li>
-									<li>
-										<h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
-										484-757-7959
-									</li>
-									<li>
-										<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
-										<a href="#">knathan31@gatech.edu</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</section>
- -->
-				<!-- Four -->
-				<!--
-					<section id="four">
-						<h2>Elements</h2>
-
-						<section>
-							<h4>Text</h4>
-							<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-							This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-							This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-							<hr />
-							<header>
-								<h4>Heading with a Subtitle</h4>
-								<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-							</header>
-							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-							<header>
-								<h5>Heading with a Subtitle</h5>
-								<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-							</header>
-							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-							<hr />
-							<h2>Heading Level 2</h2>
-							<h3>Heading Level 3</h3>
-							<h4>Heading Level 4</h4>
-							<h5>Heading Level 5</h5>
-							<h6>Heading Level 6</h6>
-							<hr />
-							<h5>Blockquote</h5>
-							<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-							<h5>Preformatted</h5>
-							<pre><code>i = 0;
-
-while (!deck.isInOrder()) {
-print 'Iteration ' + i;
-deck.shuffle();
-i++;
-}
-
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-						</section>
-
-						<section>
-							<h4>Lists</h4>
-							<div class="row">
-								<div class="col-6 col-12-xsmall">
-									<h5>Unordered</h5>
-									<ul>
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Sagittis adipiscing lorem eleifend.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-									</ul>
-									<h5>Alternate</h5>
-									<ul class="alt">
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Sagittis adipiscing lorem eleifend.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-									</ul>
-								</div>
-								<div class="col-6 col-12-xsmall">
-									<h5>Ordered</h5>
-									<ol>
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Etiam vel felis at lorem sed viverra.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Etiam vel felis at lorem sed viverra.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-									</ol>
-									<h5>Icons</h5>
-									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-										<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-										<li><a href="#" class="icon brands fa-tumblr"><span class="label">Tumblr</span></a></li>
-									</ul>
-								</div>
-							</div>
-							<h5>Actions</h5>
-							<ul class="actions">
-								<li><a href="#" class="button primary">Default</a></li>
-								<li><a href="#" class="button">Default</a></li>
-							</ul>
-							<ul class="actions small">
-								<li><a href="#" class="button primary small">Small</a></li>
-								<li><a href="#" class="button small">Small</a></li>
-							</ul>
-							<div class="row">
-								<div class="col-6 col-12-small">
-									<ul class="actions stacked">
-										<li><a href="#" class="button primary">Default</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-								</div>
-								<div class="col-6 col-12-small">
-									<ul class="actions stacked">
-										<li><a href="#" class="button primary small">Small</a></li>
-										<li><a href="#" class="button small">Small</a></li>
-									</ul>
-								</div>
-								<div class="col-6 col-12-small">
-									<ul class="actions stacked">
-										<li><a href="#" class="button primary fit">Default</a></li>
-										<li><a href="#" class="button fit">Default</a></li>
-									</ul>
-								</div>
-								<div class="col-6 col-12-small">
-									<ul class="actions stacked">
-										<li><a href="#" class="button primary small fit">Small</a></li>
-										<li><a href="#" class="button small fit">Small</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-
-						<section>
-							<h4>Table</h4>
-							<h5>Default</h5>
-							<div class="table-wrapper">
-								<table>
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th>Description</th>
-											<th>Price</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Item One</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Two</td>
-											<td>Vis ac commodo adipiscing arcu aliquet.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Three</td>
-											<td> Morbi faucibus arcu accumsan lorem.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Four</td>
-											<td>Vitae integer tempus condimentum.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Five</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-									</tbody>
-									<tfoot>
-										<tr>
-											<td colspan="2"></td>
-											<td>100.00</td>
-										</tr>
-									</tfoot>
-								</table>
-							</div>
-
-							<h5>Alternate</h5>
-							<div class="table-wrapper">
-								<table class="alt">
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th>Description</th>
-											<th>Price</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Item One</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Two</td>
-											<td>Vis ac commodo adipiscing arcu aliquet.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Three</td>
-											<td> Morbi faucibus arcu accumsan lorem.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Four</td>
-											<td>Vitae integer tempus condimentum.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Five</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-									</tbody>
-									<tfoot>
-										<tr>
-											<td colspan="2"></td>
-											<td>100.00</td>
-										</tr>
-									</tfoot>
-								</table>
-							</div>
-						</section>
-
-						<section>
-							<h4>Buttons</h4>
-							<ul class="actions">
-								<li><a href="#" class="button primary">Primary</a></li>
-								<li><a href="#" class="button">Default</a></li>
-							</ul>
-							<ul class="actions">
-								<li><a href="#" class="button large">Large</a></li>
-								<li><a href="#" class="button">Default</a></li>
-								<li><a href="#" class="button small">Small</a></li>
-							</ul>
-							<ul class="actions fit">
-								<li><a href="#" class="button primary fit">Fit</a></li>
-								<li><a href="#" class="button fit">Fit</a></li>
-							</ul>
-							<ul class="actions fit small">
-								<li><a href="#" class="button primary fit small">Fit + Small</a></li>
-								<li><a href="#" class="button fit small">Fit + Small</a></li>
-							</ul>
-							<ul class="actions">
-								<li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
-								<li><a href="#" class="button icon solid fa-download">Icon</a></li>
-							</ul>
-							<ul class="actions">
-								<li><span class="button primary disabled">Primary</span></li>
-								<li><span class="button disabled">Default</span></li>
-							</ul>
-						</section>
-
-						<section>
-							<h4>Form</h4>
-							<form method="post" action="#">
-								<div class="row gtr-uniform gtr-50">
-									<div class="col-6 col-12-xsmall">
-										<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
-									</div>
-									<div class="col-6 col-12-xsmall">
-										<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
-									</div>
-									<div class="col-12">
-										<select name="demo-category" id="demo-category">
-											<option value="">- Category -</option>
-											<option value="1">Manufacturing</option>
-											<option value="1">Shipping</option>
-											<option value="1">Administration</option>
-											<option value="1">Human Resources</option>
-										</select>
-									</div>
-									<div class="col-4 col-12-small">
-										<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-										<label for="demo-priority-low">Low Priority</label>
-									</div>
-									<div class="col-4 col-12-small">
-										<input type="radio" id="demo-priority-normal" name="demo-priority">
-										<label for="demo-priority-normal">Normal Priority</label>
-									</div>
-									<div class="col-4 col-12-small">
-										<input type="radio" id="demo-priority-high" name="demo-priority">
-										<label for="demo-priority-high">High Priority</label>
-									</div>
-									<div class="col-6 col-12-small">
-										<input type="checkbox" id="demo-copy" name="demo-copy">
-										<label for="demo-copy">Email me a copy of this message</label>
-									</div>
-									<div class="col-6 col-12-small">
-										<input type="checkbox" id="demo-human" name="demo-human" checked>
-										<label for="demo-human">I am a human and not a robot</label>
-									</div>
-									<div class="col-12">
-										<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-									</div>
-									<div class="col-12">
-										<ul class="actions">
-											<li><input type="submit" value="Send Message" class="primary" /></li>
-											<li><input type="reset" value="Reset" /></li>
-										</ul>
-									</div>
-								</div>
-							</form>
-						</section>
-
-						<section>
-							<h4>Image</h4>
-							<h5>Fit</h5>
-							<div class="box alt">
-								<div class="row gtr-50 gtr-uniform">
-									<div class="col-12"><span class="image fit"><img src="images/fulls/05.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/01.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/02.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/03.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/04.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/05.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/06.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/03.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/02.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/01.jpg" alt="" /></span></div>
-								</div>
-							</div>
-							<h5>Left &amp; Right</h5>
-							<p><span class="image left"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-							<p><span class="image right"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-						</section>
-
-					</section>
-				-->
-
-			</div>
-
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<ul class="icons">
-						<li><a href="mailto:knathan31@gatech.edu" class="icon solid fa-envelope"><span class="label">Email</span><a></a></li>
-						<li><a href="https://github.com/kashyapnathan" class="icon brands fa-github"><span class="label">Github</span><a></a></li>
-						<li><a href="https://twitter.com/kashyap_nathan" class="icon brands fa-twitter"><span class="label">Twitter</span><a></a></li>
-						<li><a href="https://www.linkedin.com/in/kash-nathan/" class="icon brands fa-linkedin"><span class="label">Linkedin</span><a></a></li>
-					</ul>
+				<div class="project">
+					<img src="images/thumbs/arb.png" alt="Crypto Arb Preview" />
+					<h3>Crypto Arbitrage Bot</h3>
+					<p>A cryptocurrency arbitrage bot that identifies and exploits inter-exchange price discrepancies for profit.</p>
+					<a href="https://github.com/kashyapnathan/crypto-arbitrage" class="button">Explore</a>
 				</div>
-			</footer>
+				<div class="project">
+					<img src="images/thumbs/perf.png" alt="PerfVantage Preview" />
+					<h3>PerfVantage</h3>
+					<p>A performance analysis and visualization tool that highlights system bottlenecks, resource usage, and efficiency improvements.</p>
+					<a href="https://github.com/kashyapnathan/EmbeddedFinal" class="button">Explore</a>
+				</div>
+				<div class="project">
+                    <img src="images/thumbs/07.png" alt="MusicInsight Preview" />
+                    <h3>MusicInsight</h3>
+                    <p>Web tool that evaluates the emotional tone of Spotify playlists, giving sentiment scores for each track.</p>
+                    <a href="https://github.com/kashyapnathan/MusicInsight" class="button">Explore</a>
+                </div>
+            </div>
+        </section>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+</body>
+    <!-- Footer -->
+    <footer id="footer">
+        <ul class="icons">
+            <li><a href="mailto:knathan31@gatech.edu" class="icon solid fa-envelope">Email</a></li>
+            <li><a href="https://github.com/kashyapnathan" class="icon brands fa-github">GitHub</a></li>
+            <li><a href="https://twitter.com/kashyapnathan_" class="icon brands fa-twitter">Twitter</a></li>
+            <li><a href="https://www.linkedin.com/in/kash-nathan/" class="icon brands fa-linkedin">LinkedIn</a></li>
+        </ul>
+    </footer>
+    <!-- Optional Scripts if needed -->
+    <!-- <script src="assets/js/main.js"></script> -->
+</body>
 </html>
