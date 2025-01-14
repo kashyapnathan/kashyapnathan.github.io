@@ -12,7 +12,7 @@
             font-family: "Helvetica Neue", Arial, sans-serif;
             color: #333;
             height: 100vh;
-            overflow: hidden; /* Prevent body scroll, we will scroll only the right pane */
+            overflow: hidden;
         }
         a {
             text-decoration: none;
@@ -83,6 +83,72 @@
         .button:hover {
             background: #004080;
         }
+        /* General styles for the Projects section */
+
+        #projects h2 {
+            text-align: center;
+            margin-bottom: 1em;
+        }
+
+        /* Grid layout for projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5em;
+            margin-top: 1em;
+        }
+
+        .project {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1em;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1em;
+        }
+
+        .project h3 {
+            font-size: 1.25em;
+            margin-bottom: 0.5em;
+            color: #333;
+        }
+
+        .project p {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 1em;
+        }
+
+        .project .button {
+            display: inline-block;
+            padding: 0.5em 1em;
+            font-size: 0.9em;
+            color: white;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .project .button:hover {
+            background-color: #0056b3;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
 
         /* Right Pane: Scrollable content */
         .right-pane {
@@ -90,9 +156,10 @@
             overflow-y: auto;
             padding: 2rem;
             box-sizing: border-box;
+            overflow: hidden;
         }
-
         .right-pane h2 {
+            text-align: center;
             font-size: 1.8rem;
             color: #001f3f;
             margin-bottom: 1rem;
@@ -104,12 +171,11 @@
             font-size: 1rem;
             color: #333;
         }
-
         /* Experience Grid */
         .experience-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 2rem;
+            gap: 4rem;
             margin-bottom: 3rem;
         }
 
@@ -241,7 +307,7 @@
         <h2>About Me:</h2>
         <p>Hey, I'm Kashyap! I'm a Junior at Georgia Tech, majoring in Computer Science. </p>
 		
-		<p> my free time, I run, DJ, ski, and cook.</p>
+		<p> In my free time, I run, DJ, ski, and cook.</p>
         <a href="https://drive.google.com/file/d/1d5-LSs4EBsLSUoqJbeBINrBbRt-yIjGC/view?usp=sharing" class="button">Learn More</a>
     </div>
 
@@ -249,8 +315,6 @@
     <div class="right-pane">
         <section id="experience">
             <h2>Professional Experience</h2>
-			<p>Here are some of the companies I've worked at:</p>   
-
             <div class="experience-grid">
                 <!-- OpenAI -->
                 <div class="company">
@@ -281,8 +345,6 @@
 
         <section id="projects">
             <h2>Projects</h2>
-            <p>Here are some personal and academic projects I've worked on:</p>
-
             <div class="projects-grid">
                 <div class="project">
 					<img src="images/thumbs/poker.png" alt="PokerPokerPoker Preview" />
@@ -291,7 +353,7 @@
 					<a href="https://github.com/kashyapnathan/PokerPokerPoker" class="button">Explore</a>
 				</div>
 				<div class="project">
-					<img src="images/thumbs/arb.png" alt="Crypto Arb Preview" />
+					<img src="images/thumbs/btc.png" alt="Crypto Arb Preview" />
 					<h3>Crypto Arbitrage Bot</h3>
 					<p>A cryptocurrency arbitrage bot that identifies and exploits inter-exchange price discrepancies for profit.</p>
 					<a href="https://github.com/kashyapnathan/crypto-arbitrage" class="button">Explore</a>
@@ -311,7 +373,6 @@
             </div>
         </section>
 
-</body>
     <!-- Footer -->
     <footer id="footer">
         <ul class="icons">
@@ -321,7 +382,5 @@
             <li><a href="https://www.linkedin.com/in/kash-nathan/" class="icon brands fa-linkedin">LinkedIn</a></li>
         </ul>
     </footer>
-    <!-- Optional Scripts if needed -->
-    <!-- <script src="assets/js/main.js"></script> -->
-</body>
+
 </html>
