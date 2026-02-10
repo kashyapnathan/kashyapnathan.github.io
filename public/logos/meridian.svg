@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="15 10 170 180">
+  <defs>
+    <clipPath id="topHalf">
+      <rect x="0" y="0" width="200" height="100"/>
+    </clipPath>
+    <clipPath id="bottomHalf">
+      <rect x="0" y="100" width="200" height="100"/>
+    </clipPath>
+  </defs>
+  <!-- Top half: just the outer ring stroke -->
+  <circle cx="100" cy="100" r="70" fill="none" stroke="#000" stroke-width="11" clip-path="url(#topHalf)"/>
+  <!-- Bottom half: filled circle -->
+  <circle cx="100" cy="100" r="75" fill="#000" clip-path="url(#bottomHalf)"/>
+  <!-- White oval cutout in bottom half -->
+  <ellipse cx="100" cy="120" rx="32" ry="26" fill="#fff"/>
+  <!-- Horizontal bar through the middle -->
+  <rect x="14" y="94" width="172" height="12" fill="#000"/>
+</svg>
