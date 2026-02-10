@@ -15,11 +15,11 @@ export default function App() {
       <Navbar />
       <Hero />
 
-      <Section id="about" title="About" description="I'm from Philly (go birds). I went to Georgia Tech in Atlanta for 3 years where I studied computer science and DJ'd on the weekends.">
+      <Section id="about" title="About" description="I'm from Philly (go birds). I went to Georgia Tech in Atlanta (on leave) where I studied computer science and DJ'd on the weekends.">
         <About />
       </Section>
 
-      <Section id="experience" title="Experience" description="Some of the companies I've worked at.">
+      <Section id="experience" title="Experience" description="Some of the companies I've worked at - was also a 2025 Greylock Fellow">
         <Experience />
       </Section>
 
@@ -27,7 +27,7 @@ export default function App() {
         <Projects />
       </Section>
 
-      <Section id="readings" title="Readings" description="Books that shaped my thinking.">
+      <Section id="readings" title="Readings" description="Books I liked.">
         <Readings />
       </Section>
 

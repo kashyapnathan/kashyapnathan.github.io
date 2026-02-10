@@ -5,7 +5,9 @@ export default function Experience() {
     <div className="space-y-6">
       {experiences.map((exp) => (
         <div key={exp.company} className="flex gap-4">
-          <img src={exp.logo} alt={exp.company} className="w-8 h-8 rounded-md object-contain shrink-0 mt-0.5" />
+          <div className="w-12 h-12 shrink-0 flex items-center justify-center">
+            <img src={exp.logo} alt={exp.company} className={`${exp.logoClass ?? 'w-8 h-8'} rounded-md object-contain`} />
+          </div>
           <div>
             <div className="flex flex-wrap items-baseline gap-x-2">
               {exp.url ? (

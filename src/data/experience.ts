@@ -3,6 +3,7 @@ export interface Experience {
   role: string
   description: string
   logo: string
+  logoClass?: string
   url?: string
 }
 
@@ -12,6 +13,7 @@ export const experiences: Experience[] = [
     role: 'Co-founder & CEO',
     description: 'The AI workspace for consulting teams (a16z backed)',
     logo: '/Meridian SS.png',
+    logoClass: 'w-12 h-12',
     url: 'https://trymeridian.dev/',
   },
   {
@@ -37,5 +39,6 @@ export const experiences: Experience[] = [
     role: 'ML Researcher',
     description: 'Collaborative Knowledge Curation',
     logo: '/logos/darpa.svg',
+    logoClass: 'w-12 h-12',
   },
 ]
