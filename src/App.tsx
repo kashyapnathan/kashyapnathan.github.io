@@ -31,11 +31,11 @@ export default function App() {
         <Readings />
       </Section>
 
-      <Section id="movies" title="Movies" description="Films I keep coming back to.">
+      <Section id="movies" title="Movies" description="Movies I liked.">
         <Movies />
       </Section>
 
-      <Section id="songs" title="Songs" description="Spotify playlists on rotation.">
+      <Section id="songs" title="Songs" description="Playlists I liked.">
         <Songs />
       </Section>
 
