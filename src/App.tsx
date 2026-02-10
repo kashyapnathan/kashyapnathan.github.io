@@ -3,7 +3,6 @@ import Hero from './components/Hero'
 import Section from './components/Section'
 import About from './components/About'
 import Experience from './components/Experience'
-import Projects from './components/Projects'
 import Readings from './components/Readings'
 import Movies from './components/Movies'
 import Songs from './components/Songs'
@@ -21,10 +20,6 @@ export default function App() {
 
       <Section id="experience" title="Experience" description="Some of the companies I've worked at - was also a 2025 Greylock Fellow">
         <Experience />
-      </Section>
-
-      <Section id="projects" title="Projects" description="Things I've built and learned from.">
-        <Projects />
       </Section>
 
       <Section id="readings" title="Readings" description="Books I liked.">

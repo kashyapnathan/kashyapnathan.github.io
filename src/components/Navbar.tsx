@@ -1,6 +1,6 @@
 import { socialLinks } from '../data/social'
 
-const sections = ['About', 'Experience', 'Projects', 'Readings', 'Movies', 'Songs']
+const sections = ['About', 'Experience', 'Readings', 'Movies', 'Songs']
 
 export default function Navbar() {
   return (
