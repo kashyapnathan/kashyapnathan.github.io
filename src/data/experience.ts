@@ -12,7 +12,7 @@ export const experiences: Experience[] = [
     company: 'Meridian',
     role: 'Co-founder & CEO',
     description: 'The AI workspace for consulting teams (a16z backed)',
-    logo: '/Meridian SS.png',
+    logo: '/logos/Logo_Black_Transpraent@2x.png',
     logoClass: 'w-12 h-12',
     url: 'https://trymeridian.dev/',
   },
