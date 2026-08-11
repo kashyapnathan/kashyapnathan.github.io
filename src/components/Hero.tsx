@@ -8,12 +8,12 @@ export default function Hero() {
         <p className="mt-4 text-xl text-gray-500 max-w-2xl leading-relaxed">
           I left Georgia Tech to build{' '}
           <a
-            href="https://trymeridian.dev/"
+            href="https://verra.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-indigo-600 hover:text-indigo-700 underline underline-offset-2"
           >
-            Meridian
+            Verra
           </a>{' '}
           with one of my close friends.
         </p>

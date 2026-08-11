@@ -9,12 +9,12 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
-    company: 'Meridian',
+    company: 'Verra',
     role: 'Co-founder & CEO',
-    description: 'The AI workspace for consulting teams (a16z backed)',
-    logo: '/logos/Logo_Black_Transpraent@2x.png',
+    description: 'Institutional memory for consulting firms',
+    logo: '/logos/verra.svg',
     logoClass: 'w-12 h-12',
-    url: 'https://trymeridian.dev/',
+    url: 'https://verra.com/',
   },
   {
     company: 'OpenAI',
